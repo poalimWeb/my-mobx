@@ -1,0 +1,9 @@
+<section>
+  <h3>Add New Word</h3>
+  <label for="theName">Name:</label>
+  <input type="text" id="theName" #theName>
+  <label for="theExample">Example:</label>
+  <input type="text" id="theExample" #theExample>
+  <br>
+  <button class="btn btn-info" (click)="addNewWord(theName.value, theExample.value)">Add</button>
+</section>
