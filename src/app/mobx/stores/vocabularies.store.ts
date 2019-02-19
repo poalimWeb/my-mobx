@@ -8,7 +8,7 @@ export class VocabulariesStore {
   @observable vocabularies: Vocabulary[];
 
   constructor() {
-    this.vocabularies = [new Vocabulary('first'), new Vocabulary('second')];
+    this.vocabularies = [];
   }
 
   /* @action */
