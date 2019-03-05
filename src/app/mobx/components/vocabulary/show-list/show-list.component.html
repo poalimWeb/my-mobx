@@ -4,12 +4,12 @@
   </h2>
 
   <ul *mobxAutorun>
-    <li *ngFor="let vocabulary of vocabulariesStore.vocabularies;  let i = index">
+    <li *ngFor="let vocabulary of vocabulariesStore.filteredVocabularies;">
       <div class="view">
         name: {{vocabulary.name}}
         example: {{vocabulary.example}}
         countShowed: {{vocabulary.countShowed}}
-        <button class="btn btn-outline-primary" (click)="vocabulariesStore.setShowed(i)">Showed</button>
+        <button class="btn btn-outline-primary" (click)="vocabulariesStore.setShowed(vocabulary)">Showed</button>
       </div>
     </li>
   </ul>

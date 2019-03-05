@@ -8,16 +8,19 @@ import {VocabularyComponent} from './components/vocabulary/vocabulary.component'
 import {ShowListComponent} from './components/vocabulary/show-list/show-list.component';
 import {VocabulariesStore} from './stores/vocabularies.store';
 import { ManageComponent } from './components/vocabulary/manage/manage.component';
+import { FilterComponent } from './components/vocabulary/filter/filter.component';
+import {Filters} from "./models/filrers";
 
 @NgModule({
-  declarations: [VocabularyComponent, ShowListComponent, ManageComponent],
+  declarations: [VocabularyComponent, ShowListComponent, ManageComponent, FilterComponent],
   imports: [
     CommonModule,
     MobxRoutingModule,
     FormsModule,
     MobxAngularModule,
   ],
-  providers: [VocabulariesStore]
+  providers: [VocabulariesStore, Filters
+  ]
 })
 export class MobxModule {
 }

@@ -11,6 +11,7 @@ export class ManageComponent implements OnInit {
   constructor(private vocabulariesStore: VocabulariesStore) { }
 
   ngOnInit() {
+    this.vocabulariesStore.addNewWord('name', 'example');
   }
 
   addNewWord(name: string, example: string) {

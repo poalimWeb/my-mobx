@@ -1,23 +1,36 @@
 import {Vocabulary} from '../models/vocabulary';
 import {Injectable} from '@angular/core';
-import {observable} from 'mobx-angular';
+import {action, computed, observable} from 'mobx-angular';
+import {Filters} from "../models/filrers";
 
 @Injectable()
 export class VocabulariesStore {
 
-  @observable vocabularies: Vocabulary[];
+  @observable vocabularies: Vocabulary[] = [];
 
-  constructor() {
-    this.vocabularies = [];
+  constructor(private filters: Filters) {
   }
 
-  /* @action */
-  addNewWord(name: string, example?: string) {
+  @action addNewWord(name: string, example?: string) {
     this.vocabularies.push(new Vocabulary(name, example));
   }
 
-
-  setShowed(index) {
-    this.vocabularies[index].increaseShow();
+  @action setShowed(vocabulary: Vocabulary) {
+    vocabulary.increaseShow();
   }
+
+
+
+  @computed get filteredVocabularies() {
+    console.log('IN filteredVocabularies filters', this.filters);
+    // return this.vocabularies.filter((vocabulary: Vocabulary) => {
+    //   return vocabulary.countShowed == 1;
+    // });
+    return this.filters.countShowed === 0 ?
+      this.vocabularies :
+      this.vocabularies.filter((vocabulary: Vocabulary) => {
+           return vocabulary.countShowed == this.filters.countShowed;
+      });
+  }
+
 }
